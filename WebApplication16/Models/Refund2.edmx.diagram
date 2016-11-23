@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1bddf4d50f3d48f8abab7e24eec4aff4" Name="Diagram1">
+        <EntityTypeShape EntityType="refund2Model.AspNetRoles" Width="1.5" PointX="1.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.AspNetUserClaims" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.AspNetUserLogins" Width="1.5" PointX="3" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.AspNetUsers" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.Bank" Width="1.5" PointX="1.5" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.BankAccount" Width="1.5" PointX="0.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.Country" Width="1.5" PointX="0.75" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.PayRoll" Width="1.5" PointX="0.75" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.Request" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.RequestStatus" Width="1.5" PointX="0.75" PointY="30.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.RequestType" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.RequiredDocument" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.UploadedDocemuent" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <AssociationConnector Association="refund2Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_Request_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_Request_AspNetUsers1" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_BankAccount_Bank" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_Request_BankAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_Request_BankAccount1" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_Request_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_Request_PayRoll" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_Request_RequestStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_Request_RequestType" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_UploadedDocemuent_Request" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_UploadedDocemuent_RequiredDocument" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.RequestTypeRequiredDocument" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
