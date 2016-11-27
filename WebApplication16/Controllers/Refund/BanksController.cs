@@ -10,107 +10,107 @@ using WebApplication16.Models;
 
 namespace WebApplication16.Controllers.Refund
 {
-    public class RequestStatusController : Controller
+    public class BanksController : Controller
     {
-        private refund2Entities1 db = new refund2Entities1();
+        private RefundDbContext db = new RefundDbContext();
 
-        // GET: RequestStatus
+        // GET: Banks
         public ActionResult Index()
         {
-            return View(db.RequestStatus.ToList());
+            return View(db.Bank.ToList());
         }
 
-        // GET: RequestStatus/Details/5
+        // GET: Banks/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RequestStatus requestStatus = db.RequestStatus.Find(id);
-            if (requestStatus == null)
+            Bank bank = db.Bank.Find(id);
+            if (bank == null)
             {
                 return HttpNotFound();
             }
-            return View(requestStatus);
+            return View(bank);
         }
 
-        // GET: RequestStatus/Create
+        // GET: Banks/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: RequestStatus/Create
+        // POST: Banks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description")] RequestStatus requestStatus)
+        public ActionResult Create([Bind(Include = "Id,Name,Local")] Bank bank)
         {
             if (ModelState.IsValid)
             {
-                db.RequestStatus.Add(requestStatus);
+                db.Bank.Add(bank);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(requestStatus);
+            return View(bank);
         }
 
-        // GET: RequestStatus/Edit/5
+        // GET: Banks/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RequestStatus requestStatus = db.RequestStatus.Find(id);
-            if (requestStatus == null)
+            Bank bank = db.Bank.Find(id);
+            if (bank == null)
             {
                 return HttpNotFound();
             }
-            return View(requestStatus);
+            return View(bank);
         }
 
-        // POST: RequestStatus/Edit/5
+        // POST: Banks/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description")] RequestStatus requestStatus)
+        public ActionResult Edit([Bind(Include = "Id,Name,Local")] Bank bank)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(requestStatus).State = EntityState.Modified;
+                db.Entry(bank).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(requestStatus);
+            return View(bank);
         }
 
-        // GET: RequestStatus/Delete/5
+        // GET: Banks/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RequestStatus requestStatus = db.RequestStatus.Find(id);
-            if (requestStatus == null)
+            Bank bank = db.Bank.Find(id);
+            if (bank == null)
             {
                 return HttpNotFound();
             }
-            return View(requestStatus);
+            return View(bank);
         }
 
-        // POST: RequestStatus/Delete/5
+        // POST: Banks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            RequestStatus requestStatus = db.RequestStatus.Find(id);
-            db.RequestStatus.Remove(requestStatus);
+            Bank bank = db.Bank.Find(id);
+            db.Bank.Remove(bank);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

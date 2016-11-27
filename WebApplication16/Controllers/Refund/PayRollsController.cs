@@ -10,107 +10,112 @@ using WebApplication16.Models;
 
 namespace WebApplication16.Controllers.Refund
 {
-    public class RequestTypesController : Controller
+    public class PayRollsController : Controller
     {
         private RefundDbContext db = new RefundDbContext();
 
-        // GET: RequestTypes
+        // GET: PayRolls
         public ActionResult Index()
         {
-            return View(db.RequestType.ToList());
+            var payRoll = db.PayRoll.Include(p => p.PayrollType);
+            return View(payRoll.ToList());
         }
 
-        // GET: RequestTypes/Details/5
+        // GET: PayRolls/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RequestType requestType = db.RequestType.Find(id);
-            if (requestType == null)
+            PayRoll payRoll = db.PayRoll.Find(id);
+            if (payRoll == null)
             {
                 return HttpNotFound();
             }
-            return View(requestType);
+            return View(payRoll);
         }
 
-        // GET: RequestTypes/Create
+        // GET: PayRolls/Create
         public ActionResult Create()
         {
+            ViewBag.TypeId = new SelectList(db.PayrollType, "Id", "Name");
             return View();
         }
 
-        // POST: RequestTypes/Create
+        // POST: PayRolls/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description")] RequestType requestType)
+        public ActionResult Create([Bind(Include = "Id,EmployeeId,AuditorId,TypeId")] PayRoll payRoll)
         {
             if (ModelState.IsValid)
             {
-                db.RequestType.Add(requestType);
+                db.PayRoll.Add(payRoll);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(requestType);
+            ViewBag.TypeId = new SelectList(db.PayrollType, "Id", "Name", payRoll.TypeId);
+            return View(payRoll);
         }
 
-        // GET: RequestTypes/Edit/5
+        // GET: PayRolls/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RequestType requestType = db.RequestType.Find(id);
-            if (requestType == null)
+            PayRoll payRoll = db.PayRoll.Find(id);
+            if (payRoll == null)
             {
                 return HttpNotFound();
             }
-            return View(requestType);
+            ViewBag.TypeId = new SelectList(db.PayrollType, "Id", "Name", payRoll.TypeId);
+            return View(payRoll);
         }
 
-        // POST: RequestTypes/Edit/5
+        // POST: PayRolls/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description")] RequestType requestType)
+        public ActionResult Edit([Bind(Include = "Id,EmployeeId,AuditorId,TypeId")] PayRoll payRoll)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(requestType).State = EntityState.Modified;
+                db.Entry(payRoll).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(requestType);
+            ViewBag.TypeId = new SelectList(db.PayrollType, "Id", "Name", payRoll.TypeId);
+            return View(payRoll);
         }
 
-        // GET: RequestTypes/Delete/5
+        // GET: PayRolls/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RequestType requestType = db.RequestType.Find(id);
-            if (requestType == null)
+            PayRoll payRoll = db.PayRoll.Find(id);
+            if (payRoll == null)
             {
                 return HttpNotFound();
             }
-            return View(requestType);
+            return View(payRoll);
         }
 
-        // POST: RequestTypes/Delete/5
+        // POST: PayRolls/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            RequestType requestType = db.RequestType.Find(id);
-            db.RequestType.Remove(requestType);
+            PayRoll payRoll = db.PayRoll.Find(id);
+            db.PayRoll.Remove(payRoll);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

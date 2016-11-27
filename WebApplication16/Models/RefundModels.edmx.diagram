@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="68c69fed2a1843aea39440d3b3c04de0" Name="Diagram1">
+        <EntityTypeShape EntityType="refund2Model.Bank" Width="1.5" PointX="1.5" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.BankAccount" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.Country" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.PayRoll" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.PayrollType" Width="1.5" PointX="1.5" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.Request" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.RequestType" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.RequiredDocument" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="refund2Model.UploadedDocemuent" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <AssociationConnector Association="refund2Model.FK_BankAccount_Bank" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_Request_BankAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_Request_BankAccount1" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_Request_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_PayRoll_PayrollType" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_Request_PayRoll" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_Request_RequestType" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_UploadedDocemuent_Request" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.FK_UploadedDocemuent_RequiredDocument" ManuallyRouted="false" />
+        <AssociationConnector Association="refund2Model.RequestTypeRequiredDocument" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

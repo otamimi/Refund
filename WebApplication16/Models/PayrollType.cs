@@ -12,18 +12,18 @@ namespace WebApplication16.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetRoles
+    public partial class PayrollType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AspNetRoles()
+        public PayrollType()
         {
-            this.AspNetUsers = new HashSet<AspNetUsers>();
+            this.PayRoll = new HashSet<PayRoll>();
         }
     
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }
+        public virtual ICollection<PayRoll> PayRoll { get; set; }
     }
 }

@@ -10,21 +10,13 @@
 namespace WebApplication16.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class RequestStatus
+    public enum RequestStatus : int
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RequestStatus()
-        {
-            this.Request = new HashSet<Request>();
-        }
-    
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Request> Request { get; set; }
+        New = 0,
+        Open = 1,
+        Closed = 2,
+        Canceled = 3,
+        Complete = 4
     }
 }

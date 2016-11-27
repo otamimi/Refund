@@ -4,61 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="refund2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AspNetRoles">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AspNetUserClaims">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="ClaimType" Type="nvarchar(max)" />
-          <Property Name="ClaimValue" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="AspNetUserLogins">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AspNetUserRoles">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AspNetUsers">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="256" />
-          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
-          <Property Name="PasswordHash" Type="nvarchar(max)" />
-          <Property Name="SecurityStamp" Type="nvarchar(max)" />
-          <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="datetime" />
-          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="GivenName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="LandLine" Type="numeric" Precision="10" Scale="0" />
-          <Property Name="IdNumber" Type="nvarchar" MaxLength="12" Nullable="false" />
-        </EntityType>
+      <Schema Namespace="refund2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bank">
           <Key>
             <PropertyRef Name="Id" />
@@ -72,8 +18,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="text" Nullable="false" />
-          <Property Name="Local" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="IBAN" Type="nchar" MaxLength="14" Nullable="false" />
           <Property Name="BankId" Type="int" Nullable="false" />
         </EntityType>
@@ -91,31 +36,31 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmployeeId" Type="int" Nullable="false" />
           <Property Name="AuditorId" Type="int" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PayrollType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="TypeId" Type="int" Nullable="false" />
           <Property Name="CitizenUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="PayrollId" Type="int" />
-          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="ReferenceNumber" Type="uniqueidentifier" Nullable="false" />
           <Property Name="EmployeeUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Note" Type="nvarchar(max)" />
           <Property Name="CountryId" Type="int" Nullable="false" />
           <Property Name="FromBankAccount" Type="int" />
           <Property Name="ToBankAccount" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RequestStatus">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="RequestType">
           <Key>
@@ -125,15 +70,13 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="RequestTypeRequiredDocument">
           <Key>
-            <PropertyRef Name="RequestTypeId" />
-            <PropertyRef Name="RequiredDocumentId" />
+            <PropertyRef Name="RequestType_Id" />
+            <PropertyRef Name="RequiredDocument_Id" />
           </Key>
-          <Property Name="RequestTypeId" Type="int" Nullable="false" />
-          <Property Name="RequiredDocumentId" Type="int" Nullable="false" />
+          <Property Name="RequestType_Id" Type="int" Nullable="false" />
+          <Property Name="RequiredDocument_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="RequiredDocument">
           <Key>
@@ -164,83 +107,15 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+        <Association Name="FK_PayRoll_PayrollType">
+          <End Role="PayrollType" Type="Self.PayrollType" Multiplicity="1" />
+          <End Role="PayRoll" Type="Self.PayRoll" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
+            <Principal Role="PayrollType">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="AspNetUserClaims">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogins">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
-          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetRoles">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserRoles">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserRoles">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Request_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-          <End Role="Request" Type="Self.Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="CitizenUserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Request_AspNetUsers1">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-          <End Role="Request" Type="Self.Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="EmployeeUserId" />
+            <Dependent Role="PayRoll">
+              <PropertyRef Name="TypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -292,18 +167,6 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Request_RequestStatus">
-          <End Role="RequestStatus" Type="Self.RequestStatus" Multiplicity="1" />
-          <End Role="Request" Type="Self.Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RequestStatus">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="StatusId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Request_RequestType">
           <End Role="RequestType" Type="Self.RequestType" Multiplicity="1" />
           <End Role="Request" Type="Self.Request" Multiplicity="*" />
@@ -324,7 +187,7 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="RequestTypeRequiredDocument">
-              <PropertyRef Name="RequestTypeId" />
+              <PropertyRef Name="RequestType_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -336,7 +199,7 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="RequestTypeRequiredDocument">
-              <PropertyRef Name="RequiredDocumentId" />
+              <PropertyRef Name="RequiredDocument_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -365,53 +228,23 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="refund2ModelStoreContainer">
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BankAccount" EntityType="Self.BankAccount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PayRoll" EntityType="Self.PayRoll" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayrollType" EntityType="Self.PayrollType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RequestStatus" EntityType="Self.RequestStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RequestType" EntityType="Self.RequestType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestTypeRequiredDocument" EntityType="Self.RequestTypeRequiredDocument" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RequiredDocument" EntityType="Self.RequiredDocument" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UploadedDocemuent" EntityType="Self.UploadedDocemuent" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RequestTypeRequiredDocument" EntityType="Self.RequestTypeRequiredDocument" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [RequestTypeRequiredDocument].[RequestTypeId] AS [RequestTypeId], 
-    [RequestTypeRequiredDocument].[RequiredDocumentId] AS [RequiredDocumentId]
-    FROM [dbo].[RequestTypeRequiredDocument] AS [RequestTypeRequiredDocument]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_BankAccount_Bank" Association="Self.FK_BankAccount_Bank">
             <End Role="Bank" EntitySet="Bank" />
             <End Role="BankAccount" EntitySet="BankAccount" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
-            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Request_AspNetUsers" Association="Self.FK_Request_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Request" EntitySet="Request" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Request_AspNetUsers1" Association="Self.FK_Request_AspNetUsers1">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Request" EntitySet="Request" />
+          <AssociationSet Name="FK_PayRoll_PayrollType" Association="Self.FK_PayRoll_PayrollType">
+            <End Role="PayrollType" EntitySet="PayrollType" />
+            <End Role="PayRoll" EntitySet="PayRoll" />
           </AssociationSet>
           <AssociationSet Name="FK_Request_BankAccount" Association="Self.FK_Request_BankAccount">
             <End Role="BankAccount" EntitySet="BankAccount" />
@@ -427,10 +260,6 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
           </AssociationSet>
           <AssociationSet Name="FK_Request_PayRoll" Association="Self.FK_Request_PayRoll">
             <End Role="PayRoll" EntitySet="PayRoll" />
-            <End Role="Request" EntitySet="Request" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Request_RequestStatus" Association="Self.FK_Request_RequestStatus">
-            <End Role="RequestStatus" EntitySet="RequestStatus" />
             <End Role="Request" EntitySet="Request" />
           </AssociationSet>
           <AssociationSet Name="FK_Request_RequestType" Association="Self.FK_Request_RequestType">
@@ -454,64 +283,11 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
             <End Role="UploadedDocemuent" EntitySet="UploadedDocemuent" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="refund2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AspNetRoles">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
-        </EntityType>
-        <EntityType Name="AspNetUserClaims">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
-        </EntityType>
-        <EntityType Name="AspNetUserLogins">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
-        </EntityType>
-        <EntityType Name="AspNetUsers">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="GivenName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LandLine" Type="Decimal" Precision="10" Scale="0" />
-          <Property Name="IdNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
-          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="Request" Relationship="Self.FK_Request_AspNetUsers" FromRole="AspNetUsers" ToRole="Request" />
-          <NavigationProperty Name="Request1" Relationship="Self.FK_Request_AspNetUsers1" FromRole="AspNetUsers" ToRole="Request" />
-          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
-        </EntityType>
         <EntityType Name="Bank">
           <Key>
             <PropertyRef Name="Id" />
@@ -527,7 +303,6 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Local" Type="Boolean" Nullable="false" />
           <Property Name="IBAN" Type="String" MaxLength="14" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="BankId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Bank" Relationship="Self.FK_BankAccount_Bank" FromRole="BankAccount" ToRole="Bank" />
@@ -549,14 +324,24 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmployeeId" Type="Int32" Nullable="false" />
           <Property Name="AuditorId" Type="Int32" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PayrollType" Relationship="Self.FK_PayRoll_PayrollType" FromRole="PayRoll" ToRole="PayrollType" />
           <NavigationProperty Name="Request" Relationship="Self.FK_Request_PayRoll" FromRole="PayRoll" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="PayrollType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PayRoll" Relationship="Self.FK_PayRoll_PayrollType" FromRole="PayrollType" ToRole="PayRoll" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="refund2Model.RequestStatus" Nullable="false" />
           <Property Name="TypeId" Type="Int32" Nullable="false" />
           <Property Name="CitizenUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PayrollId" Type="Int32" />
@@ -567,24 +352,12 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
           <Property Name="CountryId" Type="Int32" Nullable="false" />
           <Property Name="FromBankAccount" Type="Int32" />
           <Property Name="ToBankAccount" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Request_AspNetUsers" FromRole="Request" ToRole="AspNetUsers" />
-          <NavigationProperty Name="AspNetUsers1" Relationship="Self.FK_Request_AspNetUsers1" FromRole="Request" ToRole="AspNetUsers" />
           <NavigationProperty Name="BankAccount" Relationship="Self.FK_Request_BankAccount" FromRole="Request" ToRole="BankAccount" />
           <NavigationProperty Name="BankAccount1" Relationship="Self.FK_Request_BankAccount1" FromRole="Request" ToRole="BankAccount" />
           <NavigationProperty Name="Country" Relationship="Self.FK_Request_Country" FromRole="Request" ToRole="Country" />
           <NavigationProperty Name="PayRoll" Relationship="Self.FK_Request_PayRoll" FromRole="Request" ToRole="PayRoll" />
-          <NavigationProperty Name="RequestStatus" Relationship="Self.FK_Request_RequestStatus" FromRole="Request" ToRole="RequestStatus" />
           <NavigationProperty Name="RequestType" Relationship="Self.FK_Request_RequestType" FromRole="Request" ToRole="RequestType" />
           <NavigationProperty Name="UploadedDocemuent" Relationship="Self.FK_UploadedDocemuent_Request" FromRole="Request" ToRole="UploadedDocemuent" />
-        </EntityType>
-        <EntityType Name="RequestStatus">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Request" Relationship="Self.FK_Request_RequestStatus" FromRole="RequestStatus" ToRole="Request" />
         </EntityType>
         <EntityType Name="RequestType">
           <Key>
@@ -617,58 +390,6 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
           <NavigationProperty Name="Request" Relationship="Self.FK_UploadedDocemuent_Request" FromRole="UploadedDocemuent" ToRole="Request" />
           <NavigationProperty Name="RequiredDocument" Relationship="Self.FK_UploadedDocemuent_RequiredDocument" FromRole="UploadedDocemuent" ToRole="RequiredDocument" />
         </EntityType>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserClaims">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogins">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Request_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-          <End Role="Request" Type="Self.Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="CitizenUserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Request_AspNetUsers1">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-          <End Role="Request" Type="Self.Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="EmployeeUserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_BankAccount_Bank">
           <End Role="Bank" Type="Self.Bank" Multiplicity="1" />
           <End Role="BankAccount" Type="Self.BankAccount" Multiplicity="*" />
@@ -717,6 +438,18 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PayRoll_PayrollType">
+          <End Role="PayrollType" Type="Self.PayrollType" Multiplicity="1" />
+          <End Role="PayRoll" Type="Self.PayRoll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayrollType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PayRoll">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Request_PayRoll">
           <End Role="PayRoll" Type="Self.PayRoll" Multiplicity="0..1" />
           <End Role="Request" Type="Self.Request" Multiplicity="*" />
@@ -726,18 +459,6 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
             </Principal>
             <Dependent Role="Request">
               <PropertyRef Name="PayrollId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Request_RequestStatus">
-          <End Role="RequestStatus" Type="Self.RequestStatus" Multiplicity="1" />
-          <End Role="Request" Type="Self.Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RequestStatus">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="StatusId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -777,44 +498,20 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="AspNetUserRoles">
-          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
-        </Association>
         <Association Name="RequestTypeRequiredDocument">
           <End Role="RequestType" Type="Self.RequestType" Multiplicity="*" />
           <End Role="RequiredDocument" Type="Self.RequiredDocument" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="refund2Entities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+        <EntityContainer Name="RefundDbContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bank" EntityType="Self.Bank" />
           <EntitySet Name="BankAccount" EntityType="Self.BankAccount" />
           <EntitySet Name="Country" EntityType="Self.Country" />
           <EntitySet Name="PayRoll" EntityType="Self.PayRoll" />
+          <EntitySet Name="PayrollType" EntityType="Self.PayrollType" />
           <EntitySet Name="Request" EntityType="Self.Request" />
-          <EntitySet Name="RequestStatus" EntityType="Self.RequestStatus" />
           <EntitySet Name="RequestType" EntityType="Self.RequestType" />
           <EntitySet Name="RequiredDocument" EntityType="Self.RequiredDocument" />
           <EntitySet Name="UploadedDocemuent" EntityType="Self.UploadedDocemuent" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Request_AspNetUsers" Association="Self.FK_Request_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Request" EntitySet="Request" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Request_AspNetUsers1" Association="Self.FK_Request_AspNetUsers1">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Request" EntitySet="Request" />
-          </AssociationSet>
           <AssociationSet Name="FK_BankAccount_Bank" Association="Self.FK_BankAccount_Bank">
             <End Role="Bank" EntitySet="Bank" />
             <End Role="BankAccount" EntitySet="BankAccount" />
@@ -831,12 +528,12 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
             <End Role="Country" EntitySet="Country" />
             <End Role="Request" EntitySet="Request" />
           </AssociationSet>
+          <AssociationSet Name="FK_PayRoll_PayrollType" Association="Self.FK_PayRoll_PayrollType">
+            <End Role="PayrollType" EntitySet="PayrollType" />
+            <End Role="PayRoll" EntitySet="PayRoll" />
+          </AssociationSet>
           <AssociationSet Name="FK_Request_PayRoll" Association="Self.FK_Request_PayRoll">
             <End Role="PayRoll" EntitySet="PayRoll" />
-            <End Role="Request" EntitySet="Request" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Request_RequestStatus" Association="Self.FK_Request_RequestStatus">
-            <End Role="RequestStatus" EntitySet="RequestStatus" />
             <End Role="Request" EntitySet="Request" />
           </AssociationSet>
           <AssociationSet Name="FK_Request_RequestType" Association="Self.FK_Request_RequestType">
@@ -851,69 +548,24 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
             <End Role="RequiredDocument" EntitySet="RequiredDocument" />
             <End Role="UploadedDocemuent" EntitySet="UploadedDocemuent" />
           </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
-            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-          </AssociationSet>
           <AssociationSet Name="RequestTypeRequiredDocument" Association="Self.RequestTypeRequiredDocument">
             <End Role="RequestType" EntitySet="RequestType" />
             <End Role="RequiredDocument" EntitySet="RequiredDocument" />
           </AssociationSet>
         </EntityContainer>
+        <EnumType Name="RequestStatus">
+          <Member Name="New" />
+          <Member Name="Open" />
+          <Member Name="Closed" />
+          <Member Name="Canceled" />
+          <Member Name="Complete" />
+        </EnumType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="refund2ModelStoreContainer" CdmEntityContainer="refund2Entities1">
-          <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="refund2Model.AspNetRoles">
-              <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="refund2Model.AspNetUserClaims">
-              <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="refund2Model.AspNetUserLogins">
-              <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="refund2Model.AspNetUsers">
-              <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="GivenName" ColumnName="GivenName" />
-                <ScalarProperty Name="LandLine" ColumnName="LandLine" />
-                <ScalarProperty Name="IdNumber" ColumnName="IdNumber" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="refund2ModelStoreContainer" CdmEntityContainer="RefundDbContext">
           <EntitySetMapping Name="Bank">
             <EntityTypeMapping TypeName="refund2Model.Bank">
               <MappingFragment StoreEntitySet="Bank">
@@ -928,7 +580,6 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
               <MappingFragment StoreEntitySet="BankAccount">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Local" ColumnName="Local" />
                 <ScalarProperty Name="IBAN" ColumnName="IBAN" />
                 <ScalarProperty Name="BankId" ColumnName="BankId" />
               </MappingFragment>
@@ -948,6 +599,15 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
                 <ScalarProperty Name="AuditorId" ColumnName="AuditorId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayrollType">
+            <EntityTypeMapping TypeName="refund2Model.PayrollType">
+              <MappingFragment StoreEntitySet="PayrollType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -955,7 +615,7 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
             <EntityTypeMapping TypeName="refund2Model.Request">
               <MappingFragment StoreEntitySet="Request">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="TypeId" ColumnName="TypeId" />
                 <ScalarProperty Name="CitizenUserId" ColumnName="CitizenUserId" />
                 <ScalarProperty Name="PayrollId" ColumnName="PayrollId" />
@@ -966,15 +626,6 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
                 <ScalarProperty Name="FromBankAccount" ColumnName="FromBankAccount" />
                 <ScalarProperty Name="ToBankAccount" ColumnName="ToBankAccount" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RequestStatus">
-            <EntityTypeMapping TypeName="refund2Model.RequestStatus">
-              <MappingFragment StoreEntitySet="RequestStatus">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1006,20 +657,12 @@ warning 6002: The table/view 'refund2.dbo.RequestTypeRequiredDocument' does not 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="refund2Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetRoles">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-            <EndProperty Name="AspNetUsers">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-          </AssociationSetMapping>
           <AssociationSetMapping Name="RequestTypeRequiredDocument" TypeName="refund2Model.RequestTypeRequiredDocument" StoreEntitySet="RequestTypeRequiredDocument">
             <EndProperty Name="RequestType">
-              <ScalarProperty Name="Id" ColumnName="RequestTypeId" />
+              <ScalarProperty Name="Id" ColumnName="RequestType_Id" />
             </EndProperty>
             <EndProperty Name="RequiredDocument">
-              <ScalarProperty Name="Id" ColumnName="RequiredDocumentId" />
+              <ScalarProperty Name="Id" ColumnName="RequiredDocument_Id" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

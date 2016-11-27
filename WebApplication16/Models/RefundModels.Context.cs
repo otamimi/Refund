@@ -13,10 +13,10 @@ namespace WebApplication16.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class refund2Entities1 : DbContext
+    public partial class RefundDbContext : DbContext
     {
-        public refund2Entities1()
-            : base("name=refund2Entities1")
+        public RefundDbContext()
+            : base("name=RefundDbContext")
         {
         }
     
@@ -25,16 +25,12 @@ namespace WebApplication16.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Bank> Bank { get; set; }
         public virtual DbSet<BankAccount> BankAccount { get; set; }
         public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<PayRoll> PayRoll { get; set; }
+        public virtual DbSet<PayrollType> PayrollType { get; set; }
         public virtual DbSet<Request> Request { get; set; }
-        public virtual DbSet<RequestStatus> RequestStatus { get; set; }
         public virtual DbSet<RequestType> RequestType { get; set; }
         public virtual DbSet<RequiredDocument> RequiredDocument { get; set; }
         public virtual DbSet<UploadedDocemuent> UploadedDocemuent { get; set; }

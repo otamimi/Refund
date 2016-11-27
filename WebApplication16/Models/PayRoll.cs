@@ -23,7 +23,9 @@ namespace WebApplication16.Models
         public int Id { get; set; }
         public int EmployeeId { get; set; }
         public int AuditorId { get; set; }
+        public int TypeId { get; set; }
     
+        public virtual PayrollType PayrollType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Request> Request { get; set; }
     }

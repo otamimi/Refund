@@ -49,9 +49,9 @@ namespace WebApplication16.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "PhoneNumber")]
-        [Phone]
-        public string PhoneNumber { get; set; }
+        [Display(Name = "UserName")]
+        
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

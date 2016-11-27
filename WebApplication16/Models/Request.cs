@@ -21,7 +21,7 @@ namespace WebApplication16.Models
         }
     
         public int Id { get; set; }
-        public int StatusId { get; set; }
+        public RequestStatus Status { get; set; }
         public int TypeId { get; set; }
         public string CitizenUserId { get; set; }
         public Nullable<int> PayrollId { get; set; }
@@ -33,13 +33,10 @@ namespace WebApplication16.Models
         public Nullable<int> FromBankAccount { get; set; }
         public int ToBankAccount { get; set; }
     
-        public virtual AspNetUsers AspNetUsers { get; set; }
-        public virtual AspNetUsers AspNetUsers1 { get; set; }
         public virtual BankAccount BankAccount { get; set; }
         public virtual BankAccount BankAccount1 { get; set; }
         public virtual Country Country { get; set; }
         public virtual PayRoll PayRoll { get; set; }
-        public virtual RequestStatus RequestStatus { get; set; }
         public virtual RequestType RequestType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UploadedDocemuent> UploadedDocemuent { get; set; }

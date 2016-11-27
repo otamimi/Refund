@@ -17,7 +17,7 @@
     <AssemblyName>WebApplication16</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -172,69 +172,66 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\Refund\AspNetRolesController.cs" />
-    <Compile Include="Controllers\Refund\AspNetUsersController.cs" />
-    <Compile Include="Controllers\Refund\RequestStatusController.cs" />
+    <Compile Include="Controllers\Refund\BanksController.cs" />
+    <Compile Include="Controllers\Refund\PayRollsController.cs" />
+    <Compile Include="Controllers\Refund\RequestsController.cs" />
     <Compile Include="Controllers\Refund\RequestTypesController.cs" />
+    <Compile Include="Controllers\Refund\RequiredDocumentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611241244537_init.cs" />
+    <Compile Include="Migrations\201611241244537_init.Designer.cs">
+      <DependentUpon>201611241244537_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AspNetRoles.cs">
-      <DependentUpon>Refund2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserClaims.cs">
-      <DependentUpon>Refund2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserLogins.cs">
-      <DependentUpon>Refund2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUsers.cs">
-      <DependentUpon>Refund2.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Bank.cs">
-      <DependentUpon>Refund2.tt</DependentUpon>
+      <DependentUpon>RefundModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BankAccount.cs">
-      <DependentUpon>Refund2.tt</DependentUpon>
+      <DependentUpon>RefundModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Country.cs">
-      <DependentUpon>Refund2.tt</DependentUpon>
+      <DependentUpon>RefundModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PayRoll.cs">
-      <DependentUpon>Refund2.tt</DependentUpon>
+      <DependentUpon>RefundModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Refund2.Context.cs">
+    <Compile Include="Models\PayrollType.cs">
+      <DependentUpon>RefundModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RefundModels.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Refund2.Context.tt</DependentUpon>
+      <DependentUpon>RefundModels.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Refund2.cs">
+    <Compile Include="Models\RefundModels.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Refund2.tt</DependentUpon>
+      <DependentUpon>RefundModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Refund2.Designer.cs">
+    <Compile Include="Models\RefundModels.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Refund2.edmx</DependentUpon>
+      <DependentUpon>RefundModels.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Request.cs">
-      <DependentUpon>Refund2.tt</DependentUpon>
+      <DependentUpon>RefundModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RequestStatus.cs">
-      <DependentUpon>Refund2.tt</DependentUpon>
+      <DependentUpon>RefundModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RequestType.cs">
-      <DependentUpon>Refund2.tt</DependentUpon>
+      <DependentUpon>RefundModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RequiredDocument.cs">
-      <DependentUpon>Refund2.tt</DependentUpon>
+      <DependentUpon>RefundModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UploadedDocemuent.cs">
-      <DependentUpon>Refund2.tt</DependentUpon>
+      <DependentUpon>RefundModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -246,24 +243,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Refund2.Context.tt">
+    <Content Include="Models\RefundModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Refund2.edmx</DependentUpon>
-      <LastGenOutput>Refund2.Context.cs</LastGenOutput>
+      <DependentUpon>RefundModels.edmx</DependentUpon>
+      <LastGenOutput>RefundModels.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Refund2.tt">
+    <Content Include="Models\RefundModels.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Refund2.edmx</DependentUpon>
-      <LastGenOutput>Refund2.cs</LastGenOutput>
+      <DependentUpon>RefundModels.edmx</DependentUpon>
+      <LastGenOutput>RefundModels.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Refund2.edmx">
+    <EntityDeploy Include="Models\RefundModels.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Refund2.Designer.cs</LastGenOutput>
+      <LastGenOutput>RefundModels.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Refund2.edmx.diagram">
-      <DependentUpon>Refund2.edmx</DependentUpon>
+    <Content Include="Models\RefundModels.edmx.diagram">
+      <DependentUpon>RefundModels.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -277,7 +274,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -311,16 +310,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\RequestStatus\Create.cshtml" />
-    <Content Include="Views\RequestStatus\Delete.cshtml" />
-    <Content Include="Views\RequestStatus\Details.cshtml" />
-    <Content Include="Views\RequestStatus\Edit.cshtml" />
-    <Content Include="Views\RequestStatus\Index.cshtml" />
-    <Content Include="Views\RequestTypes\Create.cshtml" />
-    <Content Include="Views\RequestTypes\Delete.cshtml" />
-    <Content Include="Views\RequestTypes\Details.cshtml" />
-    <Content Include="Views\RequestTypes\Edit.cshtml" />
-    <Content Include="Views\RequestTypes\Index.cshtml" />
     <Content Include="Views\AspNetRoles\Create.cshtml" />
     <Content Include="Views\AspNetRoles\Delete.cshtml" />
     <Content Include="Views\AspNetRoles\Details.cshtml" />
@@ -331,6 +320,31 @@
     <Content Include="Views\AspNetUsers\Details.cshtml" />
     <Content Include="Views\AspNetUsers\Edit.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
+    <Content Include="Views\RequestTypes\Create.cshtml" />
+    <Content Include="Views\RequestTypes\Delete.cshtml" />
+    <Content Include="Views\RequestTypes\Details.cshtml" />
+    <Content Include="Views\RequestTypes\Edit.cshtml" />
+    <Content Include="Views\RequestTypes\Index.cshtml" />
+    <Content Include="Views\Requests\Create.cshtml" />
+    <Content Include="Views\Requests\Delete.cshtml" />
+    <Content Include="Views\Requests\Details.cshtml" />
+    <Content Include="Views\Requests\Edit.cshtml" />
+    <Content Include="Views\Requests\Index.cshtml" />
+    <Content Include="Views\Banks\Create.cshtml" />
+    <Content Include="Views\Banks\Delete.cshtml" />
+    <Content Include="Views\Banks\Details.cshtml" />
+    <Content Include="Views\Banks\Edit.cshtml" />
+    <Content Include="Views\Banks\Index.cshtml" />
+    <Content Include="Views\PayRolls\Create.cshtml" />
+    <Content Include="Views\PayRolls\Delete.cshtml" />
+    <Content Include="Views\PayRolls\Details.cshtml" />
+    <Content Include="Views\PayRolls\Edit.cshtml" />
+    <Content Include="Views\PayRolls\Index.cshtml" />
+    <Content Include="Views\RequiredDocuments\Create.cshtml" />
+    <Content Include="Views\RequiredDocuments\Delete.cshtml" />
+    <Content Include="Views\RequiredDocuments\Details.cshtml" />
+    <Content Include="Views\RequiredDocuments\Edit.cshtml" />
+    <Content Include="Views\RequiredDocuments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -345,6 +359,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611241244537_init.resx">
+      <DependentUpon>201611241244537_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -364,7 +383,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>38322</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:38322/</IISUrl>
+          <IISUrl>http://localhost/WebApplication16</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

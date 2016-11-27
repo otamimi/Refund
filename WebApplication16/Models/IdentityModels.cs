@@ -21,7 +21,7 @@ namespace WebApplication16.Models
         public string GivenName { get; set; }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext :  IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -33,4 +33,5 @@ namespace WebApplication16.Models
             return new ApplicationDbContext();
         }
     }
+
 }

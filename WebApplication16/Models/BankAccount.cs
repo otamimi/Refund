@@ -23,7 +23,6 @@ namespace WebApplication16.Models
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool Local { get; set; }
         public string IBAN { get; set; }
         public int BankId { get; set; }
     

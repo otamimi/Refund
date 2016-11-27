@@ -4,7 +4,7 @@ using Microsoft.Owin;
 using Owin;
 using WebApplication16.Models;
 
-[assembly: OwinStartupAttribute(typeof(WebApplication16.Startup))]
+[assembly: OwinStartup(typeof(WebApplication16.Startup))]
 namespace WebApplication16
 {
     public partial class Startup
@@ -14,6 +14,8 @@ namespace WebApplication16
             ConfigureAuth(app);
            // CreateRolesandUsers();
         }
+
+
         // In this method we will create default User roles and Admin user for login   
         private void CreateRolesandUsers()
         {
@@ -39,25 +41,14 @@ namespace WebApplication16
                     Email = "omtamimi@imamu.edu.sa",
 
                 };
-
-                const string userPwd = "1qa@WS3ed";
-
-                var chkUser = userManager.Create(user, userPwd);
+                var chkUser = userManager.Create(user, "1qa@WS3ed");
 
                 //Add default User to Role Admin   
                 if (chkUser.Succeeded)
                 {
-                    var result1 = userManager.AddToRole(user.Id, "Admin");
+                    userManager.AddToRole(user.Id, "Admin");
 
                 }
-            }
-
-            // creating Creating Manager role    
-            if (!roleManager.RoleExists("Manager"))
-            {
-                var role = new IdentityRole {Name = "Manager"};
-                roleManager.Create(role);
-
             }
 
             // creating Creating citizen role    
@@ -76,13 +67,39 @@ namespace WebApplication16
 
             }
 
-            // creating Creating Employee role    
-            if (!roleManager.RoleExists("Employee"))
+            // creating Creating Manager role    
+            if (!roleManager.RoleExists("Role1"))
             {
-                var role = new IdentityRole { Name = "Employee"};
+                var role = new IdentityRole { Name = "Role1" };
                 roleManager.Create(role);
 
             }
+
+            // creating Creating Employee role    
+            if (!roleManager.RoleExists("Role2"))
+            {
+                var role = new IdentityRole { Name = "Role2" };
+                roleManager.Create(role);
+
+            }
+
+            // creating Creating Manager role    
+            if (!roleManager.RoleExists("Role3"))
+            {
+                var role = new IdentityRole { Name = "Role3" };
+                roleManager.Create(role);
+
+            }
+
+
+            // creating Creating Manager role    
+            if (!roleManager.RoleExists("Role4"))
+            {
+                var role = new IdentityRole { Name = "Role4" };
+                roleManager.Create(role);
+
+            }
+
         }
     }
 }

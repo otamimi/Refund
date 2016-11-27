@@ -10,107 +10,107 @@ using WebApplication16.Models;
 
 namespace WebApplication16.Controllers.Refund
 {
-    public class RequestTypesController : Controller
+    public class RequiredDocumentsController : Controller
     {
         private RefundDbContext db = new RefundDbContext();
 
-        // GET: RequestTypes
+        // GET: RequiredDocuments
         public ActionResult Index()
         {
-            return View(db.RequestType.ToList());
+            return View(db.RequiredDocument.ToList());
         }
 
-        // GET: RequestTypes/Details/5
+        // GET: RequiredDocuments/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RequestType requestType = db.RequestType.Find(id);
-            if (requestType == null)
+            RequiredDocument requiredDocument = db.RequiredDocument.Find(id);
+            if (requiredDocument == null)
             {
                 return HttpNotFound();
             }
-            return View(requestType);
+            return View(requiredDocument);
         }
 
-        // GET: RequestTypes/Create
+        // GET: RequiredDocuments/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: RequestTypes/Create
+        // POST: RequiredDocuments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description")] RequestType requestType)
+        public ActionResult Create([Bind(Include = "Id,Name,Description")] RequiredDocument requiredDocument)
         {
             if (ModelState.IsValid)
             {
-                db.RequestType.Add(requestType);
+                db.RequiredDocument.Add(requiredDocument);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(requestType);
+            return View(requiredDocument);
         }
 
-        // GET: RequestTypes/Edit/5
+        // GET: RequiredDocuments/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RequestType requestType = db.RequestType.Find(id);
-            if (requestType == null)
+            RequiredDocument requiredDocument = db.RequiredDocument.Find(id);
+            if (requiredDocument == null)
             {
                 return HttpNotFound();
             }
-            return View(requestType);
+            return View(requiredDocument);
         }
 
-        // POST: RequestTypes/Edit/5
+        // POST: RequiredDocuments/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description")] RequestType requestType)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description")] RequiredDocument requiredDocument)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(requestType).State = EntityState.Modified;
+                db.Entry(requiredDocument).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(requestType);
+            return View(requiredDocument);
         }
 
-        // GET: RequestTypes/Delete/5
+        // GET: RequiredDocuments/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RequestType requestType = db.RequestType.Find(id);
-            if (requestType == null)
+            RequiredDocument requiredDocument = db.RequiredDocument.Find(id);
+            if (requiredDocument == null)
             {
                 return HttpNotFound();
             }
-            return View(requestType);
+            return View(requiredDocument);
         }
 
-        // POST: RequestTypes/Delete/5
+        // POST: RequiredDocuments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            RequestType requestType = db.RequestType.Find(id);
-            db.RequestType.Remove(requestType);
+            RequiredDocument requiredDocument = db.RequiredDocument.Find(id);
+            db.RequiredDocument.Remove(requiredDocument);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
