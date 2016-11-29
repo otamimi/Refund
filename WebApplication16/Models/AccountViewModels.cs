@@ -72,7 +72,7 @@ namespace WebApplication16.Models
         [Required]
         [Phone]
         [Display(Name = "Mobile Number")]
-        public string PhoneNumber { get; set; }
+        public string MobileNumber { get; set; }
 
         [Required]
         [MaxLength(60)]

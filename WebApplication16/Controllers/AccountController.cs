@@ -137,14 +137,14 @@ namespace WebApplication16.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            //model.Email = @"notrequired@never.com";
+           
           
             if (!ModelState.IsValid) return View(model);
             var user = new ApplicationUser
             {
                 Email = model.Email,
-                UserName = model.PhoneNumber,
-                PhoneNumber = model.PhoneNumber,
+                UserName = model.MobileNumber,
+                PhoneNumber = model.MobileNumber,
                 IdNumber = model.IdNumber,
                 GivenName = model.GivenName
             };

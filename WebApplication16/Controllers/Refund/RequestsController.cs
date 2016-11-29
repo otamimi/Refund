@@ -5,7 +5,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.ApplicationServices;
 using System.Web.Mvc;
+using System.Web.Security;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using WebApplication16.Models;
 
 namespace WebApplication16.Controllers.Refund
@@ -34,14 +39,11 @@ namespace WebApplication16.Controllers.Refund
         }
 
         // GET: Requests/Create
-        public ActionResult Create()
+        public ActionResult Create(RequestViewModel model)
         {
-            ViewBag.FromBankAccount = new SelectList(db.BankAccount, "Id", "Name");
-            ViewBag.ToBankAccount = new SelectList(db.BankAccount, "Id", "Name");
-            ViewBag.CountryId = new SelectList(db.Country, "Id", "Name");
-            ViewBag.PayrollId = new SelectList(db.PayRoll, "Id", "Id");
-            ViewBag.TypeId = new SelectList(db.RequestType, "Id", "Name");
-            return View();
+            model.Types = db.RequestType;
+            model.Countries = db.Country;
+            return View(model);
         }
 
         // POST: Requests/Create
@@ -49,10 +51,17 @@ namespace WebApplication16.Controllers.Refund
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Status,TypeId,CitizenUserId,PayrollId,Amount,ReferenceNumber,EmployeeUserId,Note,CountryId,FromBankAccount,ToBankAccount")] Request request)
+        [Authorize(Roles = "Citizen, Student")]
+        public ActionResult Create([Bind(Include = "TypeId,Amount,Note,CountryId,FromBankAccount,ToBankAccount")] Request request)
         {
             if (ModelState.IsValid)
             {
+                var manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                request.CitizenUserId = User.Identity.GetUserId();
+
+                request.ReferenceNumber = Guid.Empty;
+                request.FromBankAccount = null;
+                request.ToBankAccount = 0;
                 db.Request.Add(request);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -91,7 +100,7 @@ namespace WebApplication16.Controllers.Refund
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Status,TypeId,CitizenUserId,PayrollId,Amount,ReferenceNumber,EmployeeUserId,Note,CountryId,FromBankAccount,ToBankAccount")] Request request)
+        public ActionResult Edit([Bind(Include = "Status,PayrollId,Amount,EmployeeUserId,Note,CountryId,FromBankAccount,ToBankAccount")] Request request)
         {
             if (ModelState.IsValid)
             {
